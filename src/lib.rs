@@ -225,6 +225,11 @@ pub fn reuse_distance_eff(trace: Vec<String>, target: usize) -> HashMap<usize, u
                 *freq += 1;
             }
         }
+        else if stack.contains(&val){
+            let position = stack.iter().position(|&x| x == val).unwrap();
+            let item = stack.remove(position);    //remove element and place at top
+            stack.push(item);
+        }
         else{
             stack.push(val);
             // freq_map.insert(temp_dist, 0);
